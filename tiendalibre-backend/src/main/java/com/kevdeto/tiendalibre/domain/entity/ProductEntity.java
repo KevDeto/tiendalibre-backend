@@ -1,4 +1,4 @@
-package com.kevdeto.tiendalibre.model.entity;
+package com.kevdeto.tiendalibre.domain.entity;
 
 import java.math.BigDecimal;
 import java.util.Map;

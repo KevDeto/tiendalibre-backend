@@ -1,4 +1,4 @@
-package com.kevdeto.tiendalibre.model.entity;
+package com.kevdeto.tiendalibre.domain.entity;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.kevdeto.tiendalibre.model.entity;
+package com.kevdeto.tiendalibre.domain.entity;
 
 import java.time.LocalDateTime;
 
@@ -13,13 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Discount")
-public class EventDiscountEntity {
+@Table(name = "Review")
+public class ReviewEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	private Integer percentage;
-	private LocalDateTime startAt;
-	private LocalDateTime expiresAt;
+	private Integer rating;
+	private String comment;
+	private LocalDateTime date;
+	private String reviewerName;//reemplazar por UserEntity
+	private String reviewerEmail;//reemplazar por UserEntity
 }
