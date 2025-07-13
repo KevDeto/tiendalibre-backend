@@ -2,6 +2,7 @@ package com.kevdeto.tiendalibre.auth.domain.entity;
 
 import java.util.Set;
 
+import com.kevdeto.tiendalibre.domain.entity.FavoriteEntity;
 import com.kevdeto.tiendalibre.domain.entity.PurchaseEntity;
 import com.kevdeto.tiendalibre.domain.entity.ReviewEntity;
 
@@ -37,4 +38,7 @@ public class UserEntity {
 	
 	@OneToMany(mappedBy = "user")
 	private Set<PurchaseEntity> purchases;
+	
+	@OneToMany(mappedBy = "user")
+	private Set<FavoriteEntity> favorites;
 }

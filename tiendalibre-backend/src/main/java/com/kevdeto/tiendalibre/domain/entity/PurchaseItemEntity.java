@@ -17,16 +17,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "image")
-public class ImageEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String url;
-	private boolean isMain;
-	
-	/*relacion entre product - images*/
-	@ManyToOne
-	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	private ProductEntity product;
+@Table(name = "purchase_item")
+public class PurchaseItemEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private int quantity;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity product;
+
+    @ManyToOne
+    @JoinColumn(name = "purchase_id")
+    private PurchaseEntity purchase;
 }

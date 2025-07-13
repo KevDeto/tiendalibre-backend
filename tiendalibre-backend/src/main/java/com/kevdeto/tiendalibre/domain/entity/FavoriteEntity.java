@@ -1,7 +1,5 @@
 package com.kevdeto.tiendalibre.domain.entity;
 
-import java.time.LocalDateTime;
-
 import com.kevdeto.tiendalibre.auth.domain.entity.UserEntity;
 
 import jakarta.persistence.Entity;
@@ -21,21 +19,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "review")
-public class ReviewEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private Integer rating;
-	private String comment;
-	private LocalDateTime date;
-	
-	/*relacion entre reviews - product y reviews - user*/
-	@ManyToOne
-	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	private ProductEntity product;
-	
-	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private UserEntity user;
+@Table(name = "user_favorite")
+public class FavoriteEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity product;
 }

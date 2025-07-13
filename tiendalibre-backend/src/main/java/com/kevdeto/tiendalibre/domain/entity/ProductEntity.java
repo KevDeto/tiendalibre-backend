@@ -30,7 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Product")
+@Table(name = "product")
 public class ProductEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,7 +66,4 @@ public class ProductEntity {
 	
 	@OneToMany(mappedBy = "product")
 	private Set<ReviewEntity> reviews;
-	
-	@ManyToMany(mappedBy = "products")
-	private Set<PurchaseEntity> purchases;
 }
