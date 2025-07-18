@@ -11,5 +11,6 @@ public record ProductSummaryResponseDTO(
 		String name,
 		BigDecimal price,
 		String brand,
-		boolean isActive
+		String mainImageUrl,
+		boolean active
 ){}
