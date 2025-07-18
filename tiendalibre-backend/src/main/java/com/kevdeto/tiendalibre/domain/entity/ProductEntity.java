@@ -7,6 +7,7 @@ import java.util.Set;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -39,6 +40,7 @@ public class ProductEntity {
 	private BigDecimal price;
 	private String brand;
 	private String description;
+	private String mainImageUrl;
 	@Embedded
 	private Dimension dimension;
 	private Integer discountPercentage;
@@ -51,19 +53,21 @@ public class ProductEntity {
 	@CollectionTable(name = "product_tags", joinColumns = @JoinColumn(name = "product_id"))
 	@Column(name = "tag")
 	private Set<String> tags;
-	private boolean isActive;
+	private boolean active;
 	
 	/*relaciones entre entidades*/
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.MERGE})/*debo arreglar bug: detalles en exceptionhandler*/
 	@JoinTable(
 			name = "product_category",
 			joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
 	private Set<CategoryEntity> categories;
 	
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product",
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
 	private Set<ImageEntity> images;
 	
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product",
+			cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private Set<ReviewEntity> reviews;
 }
