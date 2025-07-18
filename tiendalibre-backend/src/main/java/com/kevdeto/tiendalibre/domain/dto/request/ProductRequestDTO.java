@@ -13,9 +13,12 @@ public record ProductRequestDTO(
 		BigDecimal price,
 		String brand,
 		String description,
+		String mainImageUrl,
 		Integer stock,
 		Integer discountPercentage,
 		Integer weight,
+		DimensionRequestDTO dimension,
+		boolean active,
 		Map<String, String> specs,
 		Set<String> tags,
 		Set<Long> categoryIds

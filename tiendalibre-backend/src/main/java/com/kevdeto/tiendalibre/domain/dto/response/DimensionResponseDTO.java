@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record ImageResponseDTO(
-	    String url
-//	    boolean main
+public record DimensionResponseDTO(
+		double width,
+		double height,
+		double depth
 ){}
