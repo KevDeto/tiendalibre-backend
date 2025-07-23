@@ -19,7 +19,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Builder
 @Table(name = "category")
 public class CategoryEntity {
 	@Id

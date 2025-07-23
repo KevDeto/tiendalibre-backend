@@ -55,8 +55,8 @@ public class ProductEntity {
 	private Set<String> tags;
 	private boolean active;
 	
-	/*relaciones entre entidades*/
-	@ManyToMany(cascade = {CascadeType.MERGE})/*debo arreglar bug: detalles en exceptionhandler*/
+	/*relaciones entre entidades*///debo utilizar persist. Bug resuelto
+	@ManyToMany(/*cascade = {CascadeType.MERGE}*/)/*debo arreglar bug: detalles en exceptionhandler*/
 	@JoinTable(
 			name = "product_category",
 			joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
