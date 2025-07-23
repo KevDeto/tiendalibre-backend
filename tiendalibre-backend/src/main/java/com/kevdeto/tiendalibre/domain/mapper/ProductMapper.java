@@ -36,7 +36,11 @@ public interface ProductMapper {
 	default Set<CategoryEntity> mapCategoryIdsToEntities(Set<Long> categoryIds) {
 		if (categoryIds == null)
 			return null;
-		return categoryIds.stream().map(id -> CategoryEntity.builder().id(id).build()).collect(Collectors.toSet());
+		return categoryIds.stream().map(id -> {
+			CategoryEntity category = new CategoryEntity();
+			category.setId(id);
+			return category;
+		}).collect(Collectors.toSet());
 	}
 
 	default Set<ReviewEntity> mapReviewIdsToEntities(Set<Long> reviewIds) {
