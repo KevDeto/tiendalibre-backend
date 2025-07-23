@@ -18,6 +18,7 @@ import com.kevdeto.tiendalibre.domain.specification.ProductSpecification;
 import com.kevdeto.tiendalibre.shared.exception.BusinessException;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 
 @Service
 public class ProductServiceImpl implements ProductUseCase {
@@ -71,6 +72,7 @@ public class ProductServiceImpl implements ProductUseCase {
 	}
 
 	@Override
+	@Transactional
 	public ProductDetailResponseDTO create(ProductRequestDTO productRequest) {
 		ProductEntity product = productMapper.toEntity(productRequest);
 		ProductEntity productSave = productRepository.save(product);
@@ -79,6 +81,7 @@ public class ProductServiceImpl implements ProductUseCase {
 	}
 
 	@Override
+	@Transactional
 	public ProductDetailResponseDTO update(Long id, ProductRequestDTO requestDTO) {
 		ProductEntity product = productRepository.findById(id)
 				.orElseThrow(()->new EntityNotFoundException("Producto con ID "+id+" no encontrado."));
@@ -90,6 +93,7 @@ public class ProductServiceImpl implements ProductUseCase {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Long id) {
 		if(!productRepository.existsById(id)) {
 			throw new EntityNotFoundException("Producto con ID "+id+" no encontrado.");
